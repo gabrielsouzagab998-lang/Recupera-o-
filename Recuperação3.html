@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 5px 15px;
+            margin-right: 5px;
+        }
+        h1, h2 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora</h1>
+
+    <input type="number" id="num1" value="2">
+    <input type="number" id="num2" value="3">
+
+    <button onclick="calcular('+')">+</button>
+    <button onclick="calcular('-')">-</button>
+    <button onclick="calcular('x')">x</button>
+    <button onclick="calcular('/')">/</button>
+
+    <h2 id="resultado">Resultado: </h2>
+
+    <script>
+        function calcular(operador) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const resultadoEl = document.getElementById('resultado');
+
+            if (isNaN(num1) || isNaN(num2)) {
+                resultadoEl.innerText = 'Resultado: ';
+                return;
+            }
+
+            let res;
+            if (operador === '+') res = num1 + num2;
+            else if (operador === '-') res = num1 - num2;
+            else if (operador === 'x') res = num1 * num2;
+            else if (operador === '/') res = num1 / num2;
+
+            resultadoEl.innerText = `Resultado: ${num1} ${operador} ${num2} = ${res}`;
+        }
+    </script>
+
+</body>
+</html>
