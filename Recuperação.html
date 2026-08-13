@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulação do DOM com JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    section {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    #oculto {
+      display: none;
+    }
+
+    .caixa {
+      width: 50px;
+      height: 50px;
+      background-color: lightgray;
+      display: inline-block;
+      margin: 4px;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <section>
+    <h1 id="titulo">Título original</h1>
+  </section>
+
+  
+  <section>
+    <p class="destaque">Este parágrafo mudará para a cor azul.</p>
+  </section>
+
+  
+  <section>
+    <ul>
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item">Item 3</li>
+    </ul>
+  </section>
+
+  
+  <section>
+    <p id="oculto">Este é o texto oculto que agora está visível!</p>
+    <button id="btnMostrar">Mostrar Texto Oculto</button>
+  </section>
+
+  
+  <section>
+    <input type="text" id="entrada" placeholder="Digite algo...">
+    <button id="btnAtualizar">Atualizar Texto</button>
+    <p id="resultado">O texto digitado aparecerá aqui.</p>
+  </section>
+
+  
+  <section>
+    <div class="caixa"></div>
+    <div class="caixa"></div>
+    <div class="caixa"></div>
+    <div class="caixa"></div>
+    <div class="caixa"></div>
+  </section>
+
+ 
+  <section>
+    <img id="foto" src="https://via.placeholder.com/150/ff0000/ffffff?text=Imagem+1" alt="Imagem" width="150" height="150">
+    <button id="btnTrocarImagem">Trocar Imagem</button>
+  </section>
+
+  
+  <section>
+    <button class="botao-estiloso">Botão Estiloso</button>
+  </section>
+
+  
+    
+  <section>
+    <p id="mensagem">Mensagem inicial.</p>
+  </section>
+
+  
+  <section>
+    <p class="comentario">Este é um excelente post!</p>
+    <p class="comentario">Gostei bastante da explicação.</p>
+    <p class="comentario">Muito útil para o meu aprendizado.</p>
+  </section>
+
+  <script>
+    
+    const titulo = document.getElementById("titulo");
+    titulo.textContent = "Olá, Mundo!";
+
+    
+    const paragrafoDestaque = document.querySelector(".destaque");
+    paragrafoDestaque.style.color = "blue";
+
+    
+    const itens = document.querySelectorAll(".item");
+    itens.forEach(item => {
+      item.textContent = "Item modificado";
+    });
+
+    
+    const btnMostrar = document.getElementById("btnMostrar");
+    btnMostrar.addEventListener("click", () => {
+      const paragrafoOculto = document.getElementById("oculto");
+      paragrafoOculto.style.display = "block";
+    });
+
+    
+    const btnAtualizar = document.getElementById("btnAtualizar");
+    btnAtualizar.addEventListener("click", () => {
+      const entrada = document.getElementById("entrada");
+      const resultado = document.getElementById("resultado");
+      resultado.textContent = entrada.value;
+    });
+
+    
+    const caixas = document.querySelectorAll(".caixa");
+    console.log(`Quantidade de caixas: ${caixas.length}`);
+
+    
+    const btnTrocarImagem = document.getElementById("btnTrocarImagem");
+    btnTrocarImagem.addEventListener("click", () => {
+      const foto = document.getElementById("foto");
+      foto.src = "https://via.placeholder.com/150/0000ff/ffffff?text=Imagem+2";
+    });
+
+    
+    const botaoEstiloso = document.querySelector(".botao-estiloso");
+    botaoEstiloso.style.backgroundColor = "#4CAF50";
+    botaoEstiloso.style.color = "white";
+    botaoEstiloso.style.border = "none";
+    botaoEstiloso.style.padding = "10px 20px";
+    botaoEstiloso.style.borderRadius = "8px";
+    botaoEstiloso.style.cursor = "pointer";
+
+    
+    const mensagem = document.getElementById("mensagem");
+    mensagem.textContent = "Texto da mensagem alterado via getElementById!";
+
+    
+    const comentarios = document.querySelectorAll(".comentario");
+    comentarios.forEach(comentario => {
+      comentario.textContent = "Comentário: " + comentario.textContent;
+    });
+  </script>
+
+</body>
+      </html>
